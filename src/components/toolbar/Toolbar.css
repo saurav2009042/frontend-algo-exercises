@@ -1,0 +1,109 @@
+.toolbar-container {
+    padding: 16px;
+    background-color: #fefefe;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-family: Arial, sans-serif;
+    flex-shrink: 0;
+}
+
+.edit-line {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-toggle {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-toggle:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.action-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.select-info {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 12px;
+}
+
+.select-info input[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    accent-color: #007bff;
+}
+
+.select-info .selected-count {
+    padding-left: 12px;
+    border-left: 1px solid #ccc;
+    color: #333;
+}
+
+.toolbar-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.toolbar-actions button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.toolbar-actions button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.toolbar-actions button:hover:not(:disabled) {
+    background-color: #c0c0c0;
+}
+
+.toolbar-actions button svg {
+    width: 18px;
+    height: 18px;
+}
+
+@media (max-width: 400px) {
+    .action-line {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 768px) {
+    .action-line {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .toolbar-actions button {
+        padding: 0.35rem 0.5rem;
+    }
+}
