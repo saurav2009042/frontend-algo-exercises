@@ -1,46 +1,147 @@
-# Getting Started with Create React App
+# GitHub User Search
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive React application to search and manage GitHub users.  
+This project was submitted as part of a technical interview assignment, and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🗂 Repository Structure
 
-### `npm start`
+```text
+.
+├─ README.md                  # This file
+├─ AlgorithmTask/             
+│   └─ solution.ts            # Algorithm task submission
+├─ Frontend/                  # React frontend project
+│   ├─ public/
+│   │   ├─ favicon.ico
+│   │   ├─ index.html
+│   │   ├─ logo192.png
+│   │   ├─ logo512.png
+│   │   ├─ manifest.json
+│   │   ├─ placeholder.png    # Fallback avatar
+│   │   └─ robots.txt
+│   ├─ src/
+│   │   ├─ components/
+│   │   │   ├─ search-bar/
+│   │   │   ├─ toolbar/
+│   │   │   ├─ user-card/
+│   │   │   └─ user-list/
+│   │   ├─ hooks/
+│   │   │   └─ useDebounce.ts
+│   │   ├─ interfaces/
+│   │   │   ├─ index.ts
+│   │   │   ├─ search.interface.ts
+│   │   │   ├─ toolbar.interface.ts
+│   │   │   └─ user.interface.ts
+│   │   ├─ services/
+│   │   │   └─ github.ts
+│   │   ├─ App.css
+│   │   ├─ App.test.tsx
+│   │   └─ App.css
+│   └─ package.json
+```
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## ⚡ Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Search GitHub users** by username with live search and debounce
+- **Edit mode**: select, duplicate, or delete users
+- **Responsive UI**: works on desktop, tablet, and mobile devices
+- **Accessibility**: ARIA labels, keyboard focusable components
+- **Fallback avatar** when GitHub profile image fails to load
+- **Optimized rendering** with `React.memo` and hooks
+- **Detailed JSDoc comments** for all major components
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🎨 Components Overview
 
-### `npm run build`
+- **`SearchBar`**: Input with debounce, responsive width, placeholder, and `Escape` key clearing
+- **`Toolbar`**: Edit mode toggle, select all, duplicate, delete actions
+- **`UserList`**: Displays list of users, highlights selected users
+- **`UserCard`**: Individual user info card with avatar, ID, login, and GitHub profile link
+- **`useDebounce` Hook**: Handles input debounce for smoother API calls
+- **`fetchGithubUsers` Service**: Fetches users from GitHub API with error handling and abort support
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ⚙️ Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Navigate to the Frontend folder
 
-### `npm run eject`
+```bash
+cd Frontend
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 🛠️ Install Dependencies
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### ▶️ Run the app in development mode
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm run start
+```
 
-## Learn More
+Then open http://localhost:3000 in your browser.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📱 Responsive Design
+
+- **Desktop**: Wide search bar, centered layout  
+- **Tablet (`≤768px`)**: Search bar and components adjust width proportionally  
+- **Mobile (`<400px`)**: Components shrink naturally to fit the viewport  
+- **Fallback widths**: Ensure no element breaks on extremely small screens
+
+---
+
+## 📂 Algorithm Task
+
+The algorithm task is submitted separately under `AlgorithmTask/solution.ts`.
+
+---
+
+## 🛠 Tech Stack
+
+- **React** 19  
+- **TypeScript** 4.9  
+- **React Icons**  
+- **CSS Flexbox & Media Queries**  
+- **Fetch API** with `AbortController`  
+- **JSDoc** for documentation
+
+---
+
+## ✅ Notes
+
+- `public/placeholder.png` used as fallback for user avatars  
+- Components use `React.memo` to prevent unnecessary re-renders  
+- All code is fully documented with JSDoc comments  
+- The repo is structured to separate frontend project from algorithm task submission
+
+---
+
+## 📸 Screenshots
+
+### Empty Search
+![Empty Search](Frontend/screenshots/empty_search.png)
+<br/> 
+
+### Normal Search
+![Normal Search](Frontend/screenshots/normal_search_desktop.png)
+<br/> 
+
+### Edit Mode (Not all entries selected)
+![Edit Mode](Frontend/screenshots/edit_mode_not_all_selected.png)
+<br/> 
+
+### Content Scroll
+![Content Scroll](Frontend/screenshots/scroll.png)
+<br/> 
+
+### Small Screen (Responsiveness)
+<img src="Frontend/screenshots/small_screen.png" alt="Small Screen" width="200"/>
