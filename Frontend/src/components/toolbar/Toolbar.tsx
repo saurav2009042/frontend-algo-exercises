@@ -3,6 +3,30 @@ import { FaCopy, FaTrash } from 'react-icons/fa';
 import { IToolbarProps } from '../../interfaces';
 import './Toolbar.css';
 
+/**
+ * Toolbar Component
+ *
+ * A reusable toolbar for entering / exiting Edit Mode, 
+ * for managing a list of items such as selecting them all or a few,
+ * duplicating, and deleting them.
+ *
+ * Props:
+ * - `allSelected` (boolean): Whether all items are currently selected.
+ * - `toggleAll` (function): Toggles select-all checkbox state.
+ * - `selectedCount` (number): Number of currently selected items.
+ * - `onDelete` (function): Callback to delete selected items.
+ * - `onDuplicate` (function): Callback to duplicate selected items.
+ * - `editMode` (boolean): Whether edit mode is active.
+ * - `toggleEdit` (function): Toggles edit mode on/off.
+ * - `totalCount` (number): Total number of items available.
+ *
+ * Features:
+ * - Accessible `role="toolbar"` with ARIA attributes for screen readers.
+ * - "Indeterminate" state on the select-all checkbox when only some items are selected.
+ * - Keyboard and screen reader-friendly with `aria-pressed` and `aria-checked`.
+ * - Uses `React.memo` to prevent unnecessary re-renders.
+ */
+
 const Toolbar: React.FC<IToolbarProps> = ({
     allSelected,
     toggleAll,
@@ -17,6 +41,7 @@ const Toolbar: React.FC<IToolbarProps> = ({
 
     useEffect(() => {
         if (selectAllRef.current) {
+            // Enables the "indeterminate" state for the checkbox
             selectAllRef.current.indeterminate = selectedCount > 0 && selectedCount < totalCount;
         }
     }, [selectedCount, totalCount]);
@@ -37,6 +62,7 @@ const Toolbar: React.FC<IToolbarProps> = ({
                 </button>
             </div>
 
+            {/* Actions available only in edit mode */}
             {editMode && (
                 <div className='action-line'>
                     <label className='select-info'>

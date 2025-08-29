@@ -2,6 +2,25 @@ import React from 'react';
 import { IUserCardProps } from '../../interfaces';
 import './UserCard.css';
 
+/**
+ * UserCard Component
+ *
+ * Displays a GitHub user in a card format with avatar, ID, username,
+ * and link to the GitHub profile. Supports selection in edit mode.
+ *
+ * Props:
+ * - `user` (object): GitHub user object containing `id`, `login`, `avatar_url`, and `html_url`.
+ * - `selected` (boolean): Whether the user is currently selected (checkbox state).
+ * - `onToggle` (function): Callback to toggle selection when checkbox changes.
+ * - `editMode` (boolean): Whether edit mode is active (checkbox visible only in edit mode).
+ *
+ * Features:
+ * - Keyboard focusable (`tabIndex=0`) for accessibility.
+ * - ARIA labels for screen readers.
+ * - Fallback avatar image if `avatar_url` fails to load.
+ * - Uses `React.memo` to prevent unnecessary re-renders.
+ */
+
 const UserCard: React.FC<IUserCardProps> = ({ user, selected, onToggle, editMode }) => {
     return (
         <div className='user-card' tabIndex={0} aria-label={`Github user ${user.login}`}>

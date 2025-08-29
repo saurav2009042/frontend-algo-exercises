@@ -1,3 +1,4 @@
+/* User List Container */
 .user-list {
     display: flex;
     flex-wrap: wrap;
@@ -6,6 +7,7 @@
     padding: 20px;
 }
 
+/* User Card Base Styles */
 .user-card {
     width: 100px;
     padding: 12px;
@@ -33,6 +35,7 @@
     z-index: 2;
 }
 
+/* Avatar and User Info */
 .user-card img.avatar {
     width: 60px;
     height: 60px;
@@ -58,6 +61,7 @@
     margin-bottom: 6px;
 }
 
+/* View Profile Button */
 .user-card .user-info .view-profile-btn {
     display: inline-block;
     font-size: 11px;

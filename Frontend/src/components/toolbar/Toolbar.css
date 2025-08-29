@@ -1,3 +1,4 @@
+/* Toolbar Container */
 .toolbar-container {
     padding: 16px;
     background-color: #fefefe;
@@ -7,6 +8,8 @@
     font-family: Arial, sans-serif;
     flex-shrink: 0;
 }
+
+/* Edit Mode Toggle */
 
 .edit-line {
     display: flex;
@@ -37,6 +40,7 @@
     align-items: center;
 }
 
+/* Select-all info */
 .select-info {
     display: flex;
     align-items: center;
@@ -56,6 +60,7 @@
     color: #333;
 }
 
+/* Action buttons (duplicate/delete) */
 .toolbar-actions {
     display: flex;
     gap: 10px;
@@ -88,6 +93,7 @@
     height: 18px;
 }
 
+/* Mobile: stack actions and reduce spacing */
 @media (max-width: 400px) {
     .action-line {
         flex-direction: column;
@@ -96,6 +102,7 @@
     }
 }
 
+/* Tablet: adjust layout and button spacing */
 @media (min-width: 401px) and (max-width: 768px) {
     .action-line {
         flex-direction: row;

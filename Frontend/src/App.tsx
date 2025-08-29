@@ -7,6 +7,17 @@ import { useDebounce } from './hooks/useDebounce';
 import { IGithubUser } from './interfaces/user.interface';
 import { fetchGithubUsers } from './services/github';
 
+/**
+ * App Component
+ *
+ * Main application component for searching GitHub users.
+ * Features:
+ * - Search input with debounced API requests.
+ * - List of users displayed as UserCards.
+ * - Edit mode with selection, duplication, and deletion of users.
+ * - Handles loading state, errors, and GitHub API rate limits.
+ */
+
 const App: React.FC = () => {
     const [query, setQuery] = useState('');
     const [users, setUsers] = useState<IGithubUser[]>([]);
@@ -20,6 +31,7 @@ const App: React.FC = () => {
 
     const debouncedQuery = useDebounce(query, 350);
 
+    // Fetch GitHub users when the debounced query changes
     useEffect(() => {
         if (!debouncedQuery) {
             setUsers([]);
@@ -27,6 +39,7 @@ const App: React.FC = () => {
             return;
         }
 
+        // Cancel previous request if still pending
         controllerRef.current?.abort();
         const controller = new AbortController();
         controllerRef.current = controller;
@@ -42,6 +55,7 @@ const App: React.FC = () => {
             .catch((err) => {
                 if (err.message === 'rate_limit') {
                     setError('GitHub API rate limit exceeded. Please wait.');
+
                 } else if (err.name !== 'AbortError') {
                     setError('Something went wrong. Try again.');
                 }
@@ -49,6 +63,7 @@ const App: React.FC = () => {
             .finally(() => setLoading(false));
     }, [debouncedQuery]);
 
+     // Toggle individual user selection
     const toggleSelect = (id: number) => {
         setSelected((prev) => {
             const copy = new Set(prev);
@@ -57,6 +72,7 @@ const App: React.FC = () => {
         });
     };
 
+    // Toggle all users selection
     const toggleAll = () => {
         if (selected.size === users.length) {
             setSelected(new Set());
@@ -65,11 +81,13 @@ const App: React.FC = () => {
         }
     };
 
+    // Delete selected users
     const onDelete = () => {
         setUsers((prev) => prev.filter((u) => !selected.has(u.id)));
         setSelected(new Set());
     };
 
+    // Duplicate selected users
     const onDuplicate = () => {
         setUsers((prev) => {
             const newUsers: typeof prev = [];
@@ -77,6 +95,7 @@ const App: React.FC = () => {
             prev.forEach((user) => {
                 newUsers.push(user);
                 if (selected.has(user.id)) {
+                    // Assign new unique ID for duplicated user
                     newUsers.push({ ...user, id: Date.now() + Math.random() });
                 }
             });

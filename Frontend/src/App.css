@@ -1,3 +1,4 @@
+/* App Container */
 .app {
     height: 100vh;
     max-width: 1200px;
@@ -8,6 +9,7 @@
     overflow: hidden;
 }
 
+/* App Header */
 .app-header {
     height: 64px;
     display: flex;
@@ -22,13 +24,17 @@
     flex-shrink: 0;
 }
 
+/* Search Container */
 .search-container {
     padding: 12px 16px;
     display: flex;
     justify-content: center;
     flex-shrink: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+/* Toolbar Container */
 .toolbar-container {
     padding: 16px;
     background-color: #fefefe;
@@ -39,6 +45,7 @@
     flex-shrink: 0;
 }
 
+/* Scrollable User List */
 .userlist-scroll {
     flex: 1;
     min-height: 0;
